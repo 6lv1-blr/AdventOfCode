@@ -36,7 +36,7 @@ On perd beaucoup de temps à faire les choses plus proprement mais je publierai 
   Ajout d'une version non visuelle hors stringgrid, avec Array of int8 car c'est comme cela que cela devrait être fait si on avait encore plus de données et que l'on veut optimiser le temps d'exécution
   
   les vidéos de mes réflexion pour arriver aux résultats sont sur Youtube :
-  https://www.youtube.com/watch?v=oUgHeqsURPw  1/3 part one en Excel
-  https://www.youtube.com/watch?v=-bG02zM7jyA  2/3 part one en Delphi
-  https://www.youtube.com/watch?v=biqsF-8-O9U  3/3 part two en Delphi
+ #### https://www.youtube.com/watch?v=oUgHeqsURPw  1/3 part one en Excel
+ #### https://www.youtube.com/watch?v=-bG02zM7jyA  2/3 part one en Delphi
+ #### https://www.youtube.com/watch?v=biqsF-8-O9U  3/3 part two en Delphi
   
