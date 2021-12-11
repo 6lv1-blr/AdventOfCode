@@ -1,4 +1,4 @@
-# AdventOfCode
+# Advent Of Code
 Programme pour résoudre advent of code
 
 
