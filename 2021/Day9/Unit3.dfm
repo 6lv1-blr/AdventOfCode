@@ -1,7 +1,7 @@
 object Form3: TForm3
   Left = 0
   Top = 0
-  Caption = 'Form3'
+  Caption = 'Advent of Code Day 10-2021 6lv1-Blr'
   ClientHeight = 819
   ClientWidth = 1089
   Color = clBtnFace
@@ -40,32 +40,13 @@ object Form3: TForm3
     Height = 15
     Caption = 'Arret '#224' l'#39#233'tape :'
   end
-  object StringGridPuzzle: TStringGrid
-    Left = 3
-    Top = 8
-    Width = 466
-    Height = 601
-    Anchors = [akLeft, akTop, akRight, akBottom]
-    DefaultColWidth = 10
-    DefaultRowHeight = 10
-    FixedCols = 0
-    FixedRows = 0
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -7
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goFixedRowDefAlign]
-    ParentFont = False
-    TabOrder = 0
-  end
   object StringGridBasin: TStringGrid
     Left = 908
     Top = 400
     Width = 135
     Height = 209
     Anchors = [akTop, akRight]
-    TabOrder = 1
+    TabOrder = 0
   end
   object ButtonEtape1_1: TButton
     Left = 875
@@ -74,7 +55,7 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 1.1'
-    TabOrder = 2
+    TabOrder = 1
     OnClick = ButtonEtape1_1Click
   end
   object SpinEdit1: TSpinEdit
@@ -85,7 +66,7 @@ object Form3: TForm3
     Anchors = [akTop, akRight]
     MaxValue = 0
     MinValue = 0
-    TabOrder = 3
+    TabOrder = 2
     Value = 0
     OnChange = ButtonEtape2_1Click
   end
@@ -95,10 +76,10 @@ object Form3: TForm3
     Width = 121
     Height = 23
     Anchors = [akTop, akRight]
-    EditLabel.Width = 75
+    EditLabel.Width = 202
     EditLabel.Height = 15
-    EditLabel.Caption = 'Resultat Part 2'
-    TabOrder = 4
+    EditLabel.Caption = 'Resultat Part 2  /attendu Sample : 1134'
+    TabOrder = 3
     Text = ''
   end
   object MemoInputPuzzle: TMemo
@@ -409,7 +390,7 @@ object Form3: TForm3
         '0156976323456789534567994321014569795499543568987954698767767894' +
         '397654545798987678996543232345678954')
     ScrollBars = ssBoth
-    TabOrder = 5
+    TabOrder = 4
     WordWrap = False
   end
   object ButtonEtape2_1: TButton
@@ -419,7 +400,7 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 2.1'
-    TabOrder = 6
+    TabOrder = 5
     OnClick = ButtonEtape2_1Click
   end
   object ButtonEtape1_2: TButton
@@ -429,7 +410,7 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 1.2'
-    TabOrder = 7
+    TabOrder = 6
     OnClick = ButtonEtape1_2Click
   end
   object ButtonEtape1_3: TButton
@@ -439,7 +420,7 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 1.3'
-    TabOrder = 8
+    TabOrder = 7
     OnClick = ButtonEtape1_3Click
   end
   object LabeledEditResultPart1: TLabeledEdit
@@ -448,10 +429,10 @@ object Form3: TForm3
     Width = 121
     Height = 23
     Anchors = [akTop, akRight]
-    EditLabel.Width = 75
+    EditLabel.Width = 208
     EditLabel.Height = 15
-    EditLabel.Caption = 'Resultat Part 1'
-    TabOrder = 9
+    EditLabel.Caption = 'Resultat Part 1  /attendu sur sample : 15'
+    TabOrder = 8
     Text = ''
   end
   object ButtonEtape2_2: TButton
@@ -461,27 +442,11 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 2.2'
-    TabOrder = 10
+    TabOrder = 9
     OnClick = ButtonEtape2_2Click
   end
-  object StringGridDemineur: TStringGrid
-    Left = 474
-    Top = 8
-    Width = 395
-    Height = 601
-    Anchors = [akTop, akRight, akBottom]
-    DefaultColWidth = 10
-    DefaultRowHeight = 10
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -7
-    Font.Name = 'Segoe UI'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 11
-  end
   object MemoInputSample: TMemo
-    Left = 440
+    Left = 415
     Top = 615
     Width = 289
     Height = 186
@@ -493,7 +458,7 @@ object Form3: TForm3
       '8767896789'
       '9899965678')
     ScrollBars = ssBoth
-    TabOrder = 12
+    TabOrder = 10
     WordWrap = False
   end
   object Button1: TButton
@@ -503,7 +468,7 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 1.1 Sur Sample'
-    TabOrder = 13
+    TabOrder = 11
     OnClick = Button1Click
   end
   object Button2: TButton
@@ -513,7 +478,7 @@ object Form3: TForm3
     Height = 56
     Anchors = [akLeft, akBottom]
     Caption = 'Coller le presse papier dans le memo'
-    TabOrder = 14
+    TabOrder = 12
     WordWrap = True
     OnClick = Button2Click
   end
@@ -524,7 +489,63 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Tous en mode Array'
-    TabOrder = 15
+    TabOrder = 13
     OnClick = Button3Click
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 5
+    Width = 869
+    Height = 604
+    ActivePage = TabSheet1
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    TabOrder = 14
+    object TabSheet1: TTabSheet
+      Caption = 'TabSheet1'
+      object Splitter1: TSplitter
+        Left = 408
+        Top = 0
+        Height = 574
+        Align = alRight
+        ExplicitLeft = 168
+        ExplicitTop = 96
+        ExplicitHeight = 100
+      end
+      object StringGridDemineur: TStringGrid
+        Left = 411
+        Top = 0
+        Width = 450
+        Height = 574
+        Align = alRight
+        DefaultColWidth = 10
+        DefaultRowHeight = 10
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -7
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+      object StringGridPuzzle: TStringGrid
+        Left = 0
+        Top = 0
+        Width = 408
+        Height = 574
+        Align = alClient
+        DefaultColWidth = 10
+        DefaultRowHeight = 10
+        FixedCols = 0
+        FixedRows = 0
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -7
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goFixedRowDefAlign]
+        ParentFont = False
+        TabOrder = 1
+      end
+    end
   end
 end

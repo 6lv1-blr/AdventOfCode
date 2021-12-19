@@ -6,13 +6,12 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
   Vcl.Samples.Spin, Vcl.Grids,
-  Types, Generics.Collections;
+  Types, Generics.Collections, Vcl.Imaging.pngimage, Vcl.ComCtrls;
 
 type
   Array2dint8 = array of array of int8;
 
   TForm3 = class(TForm)
-    StringGridPuzzle: TStringGrid;
     StringGridBasin: TStringGrid;
     ButtonEtape1_1: TButton;
     SpinEdit1: TSpinEdit;
@@ -23,7 +22,6 @@ type
     ButtonEtape1_3: TButton;
     LabeledEditResultPart1: TLabeledEdit;
     ButtonEtape2_2: TButton;
-    StringGridDemineur: TStringGrid;
     MemoInputSample: TMemo;
     Button1: TButton;
     Label1: TLabel;
@@ -31,6 +29,11 @@ type
     Button3: TButton;
     LabelEtape2_1Progress: TLabel;
     Label2: TLabel;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    StringGridDemineur: TStringGrid;
+    Splitter1: TSplitter;
+    StringGridPuzzle: TStringGrid;
     procedure ButtonEtape1_1Click(Sender: TObject);
     procedure ButtonEtape1_2Click(Sender: TObject);
     procedure ButtonEtape1_3Click(Sender: TObject);
@@ -194,9 +197,9 @@ begin
 
   // Etape 1.2
 
-  for i := 1 to GridPuzzleRowCount - 1 do
+  for i := 1 to GridPuzzleRowCount - 2 do
     begin
-      for j := 1 to GridPuzzleColCount - 1 do
+      for j := 1 to GridPuzzleColCount - 2 do
         begin
           if (GridPuzzle[i, j] < GridPuzzle[i - 1, j]) and // voisin Gauche
             (GridPuzzle[i, j] < GridPuzzle[i + 1, j]) and // voisin Droite
@@ -210,9 +213,9 @@ begin
 
   // Etape 1.3
   sum_of_the_risk_levels := 0;
-  for i := 1 to GridPuzzleRowCount - 1 do
+  for i := 1 to GridPuzzleRowCount - 2 do
     begin
-      for j := 1 to GridPuzzleColCount - 1 do
+      for j := 1 to GridPuzzleColCount - 2 do
         begin
           if GridPuzzle[i, j] < -0 then
             sum_of_the_risk_levels := sum_of_the_risk_levels + 1 - (GridPuzzle[i, j] + 100)
@@ -226,9 +229,9 @@ begin
 
   ListBasin := TIntegerDynArray.Create();
 
-  for i := 1 to GridPuzzleRowCount - 1 do
+  for i := 1 to GridPuzzleRowCount - 2 do
     begin
-      for j := 1 to GridPuzzleColCount - 1 do
+      for j := 1 to GridPuzzleColCount - 2 do
         begin
           if (GridPuzzle[i, j] < -0) then
             begin
