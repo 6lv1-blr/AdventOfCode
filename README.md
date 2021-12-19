@@ -58,3 +58,6 @@ En traitement d'image avec Visiopal (logiciel de l'entreprise ou je travaille)
 Script présent mais nécessite le logiciel
 Image résultat présente avec les traits horizontaux et verticaux représentant les plis
 
+## Day 14
+
+En Delphi avec gestion d'un dictionnaire
