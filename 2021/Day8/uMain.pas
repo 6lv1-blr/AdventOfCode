@@ -45,6 +45,8 @@ type
     ButtonEtape2_2_2: TButton;
     ButtonEtape2_2_6: TButton;
     LabeledEditResultEtape2: TLabeledEdit;
+    MemoDonneesExemple: TMemo;
+    ButtondonneesExemple: TButton;
     procedure ButtonGoEtape1Click(Sender: TObject);
     procedure ButtonEtape1_1Click(Sender: TObject);
     procedure ButtonEtape1_2Click(Sender: TObject);
@@ -63,6 +65,7 @@ type
     procedure ButtonEtape2_2_4Click(Sender: TObject);
     procedure ButtonEtape2_2_5Click(Sender: TObject);
     procedure ButtonEtape2_2_6Click(Sender: TObject);
+    procedure ButtondonneesExempleClick(Sender: TObject);
   private
     { Déclarations privées }
   public
@@ -81,6 +84,12 @@ procedure TfMain.ButtonGoEtape1Click(Sender: TObject);
 begin
   MemoEtape1.Lines.Text := MemoInputPuzzle.Lines.Text;
   PageControl1.ActivePage := TabSheet2;
+end;
+
+procedure TfMain.ButtondonneesExempleClick(Sender: TObject);
+begin
+  MemoInputPuzzle.Lines.Text := MemoDonneesExemple.Lines.Text;
+
 end;
 
 procedure TfMain.ButtonEtape1_1Click(Sender: TObject);

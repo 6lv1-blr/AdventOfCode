@@ -636,6 +636,7 @@ object fMain: TfMain
             'dgb bd abdfegc fgabed')
         ScrollBars = ssBoth
         TabOrder = 0
+        WordWrap = False
       end
       object ButtonGoEtape1: TButton
         Left = 1033
@@ -677,6 +678,56 @@ object fMain: TfMain
           'Etape 2.1 Cherche les Combinaisons'
           '')
         TabOrder = 4
+      end
+      object MemoDonneesExemple: TMemo
+        Left = 769
+        Top = 320
+        Width = 342
+        Height = 319
+        Anchors = [akTop, akRight, akBottom]
+        Lines.Strings = (
+          
+            'be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdg' +
+            'acbe cefdb cefbgd gcbe'
+          
+            'edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec | fcg' +
+            'edb cgb dgebacf gc'
+          
+            'fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef | cg ' +
+            'cg fdcagb cbg'
+          
+            'fbegcd cbd adcefb dageb afcb bc aefdc ecdab fgdeca fcdbega | efa' +
+            'bcd cedba gadfec cb'
+          
+            'aecbfdg fbg gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga | gec' +
+            'f egdcabf bgf bfgea'
+          
+            'fgeab ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf | geb' +
+            'dcfa ecba ca fadegcb'
+          
+            'dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf | cef' +
+            'g dcbef fcge gbcadfe'
+          
+            'bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd | ed ' +
+            'bcgafe cdgba cbgef'
+          
+            'egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbd' +
+            'fcae bgc cg cgb'
+          
+            'gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fga' +
+            'e cfgab fg bagce')
+        ScrollBars = ssBoth
+        TabOrder = 5
+        WordWrap = False
+      end
+      object ButtondonneesExemple: TButton
+        Left = 808
+        Top = 289
+        Width = 185
+        Height = 25
+        Caption = '<== donn'#233'es de l'#39'exemple'
+        TabOrder = 6
+        OnClick = ButtondonneesExempleClick
       end
     end
     object TabSheet2: TTabSheet
