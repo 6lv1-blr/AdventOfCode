@@ -13,11 +13,14 @@ un peu de recherche/remplace sous notepad++ pour des expressions régulières.
 ## Day 5
 Le Day 5 a été fait dans le logiciel de mon travail, traité en temps qu'image.
 
+## Day 6
 Le Day 6 est intéressant car impossible en Win32 sous delphi pour l'étape 1
 
 même en Win64 pour l'étape 2 il est en mémoire insuffisante pour mes 16Go de ram.
 
 python était aussi en défaut, mais j'ai réussi à changer de tactique en python mais pas fait l'équivalent en Delphi pour le moment
+
+Maj 19-12-2021 en live sur Twitch avec Patrick Premartin, je l'ai refait en mode dictionnaire du coup beaucoup plus rapide et peu de ligne
 
 ## Day 8 le plus abouti à tester
 le 2021/Day8/ est le projet avec beaucoup d'expression régulières que j'aurais eu beaucoup de mal à faire sans cela.
