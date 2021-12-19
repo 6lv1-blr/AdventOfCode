@@ -40,3 +40,21 @@ On perd beaucoup de temps à faire les choses plus proprement mais je publierai 
  #### https://www.youtube.com/watch?v=-bG02zM7jyA  2/3 part one en Delphi
  #### https://www.youtube.com/watch?v=biqsF-8-O9U  3/3 part two en Delphi
   
+## Day 10
+
+En Delphi avec une version graphique en StringGrid mais aussi une version en mode Array pour une réelle manière de l'implémenter de facon optimum
+
+## Day 11
+
+En Delphi avec une version graphique en StringGrid mais aussi une version en mode Array pour une réelle manière de l'implémenter de facon optimum
+
+## Day 12
+
+En Delphi avec une version graphique en StringGrid mais aussi une version en mode Array pour une réelle manière de l'implémenter de facon optimum
+
+## Day 13
+
+En traitement d'image avec Visiopal (logiciel de l'entreprise ou je travaille)
+Script présent mais nécessite le logiciel
+Image résultat présente avec les traits horizontaux et verticaux représentant les plis
+
