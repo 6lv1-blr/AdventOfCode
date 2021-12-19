@@ -1,7 +1,7 @@
 object Form2: TForm2
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Advent of Code Day 6-2021 6lv1-Blr'
   ClientHeight = 441
   ClientWidth = 624
   Color = clBtnFace
@@ -19,8 +19,8 @@ object Form2: TForm2
     Height = 15
   end
   object Button1: TButton
-    Left = 88
-    Top = 64
+    Left = 72
+    Top = 99
     Width = 105
     Height = 25
     Caption = 'Lance le Calcul'
@@ -28,15 +28,15 @@ object Form2: TForm2
     OnClick = Button1Click
   end
   object Edit1: TEdit
-    Left = 64
-    Top = 136
+    Left = 48
+    Top = 171
     Width = 521
     Height = 23
     TabOrder = 1
   end
   object SpinEdit1: TSpinEdit
-    Left = 208
-    Top = 65
+    Left = 192
+    Top = 100
     Width = 121
     Height = 24
     MaxValue = 0
@@ -45,8 +45,8 @@ object Form2: TForm2
     Value = 80
   end
   object Memo1: TMemo
-    Left = 88
-    Top = 0
+    Left = 72
+    Top = 35
     Width = 329
     Height = 57
     Lines.Strings = (
@@ -57,5 +57,40 @@ object Form2: TForm2
       'voir le mod'#232'le en python sur comment faire en plusieurs '
       'passes')
     TabOrder = 3
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 422
+    Width = 624
+    Height = 19
+    Panels = <>
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Top = 0
+    Width = 624
+    Height = 29
+    Caption = 'ToolBar1'
+    TabOrder = 5
+  end
+  object Button2: TButton
+    Left = 280
+    Top = 232
+    Width = 225
+    Height = 25
+    Caption = 'Mode Dictionnaire'
+    TabOrder = 6
+    OnClick = Button2Click
+  end
+  object LabeledEdit1: TLabeledEdit
+    Left = 312
+    Top = 304
+    Width = 121
+    Height = 23
+    EditLabel.Width = 67
+    EditLabel.Height = 15
+    EditLabel.Caption = 'LabeledEdit1'
+    TabOrder = 7
+    Text = ''
   end
 end
