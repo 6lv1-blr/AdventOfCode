@@ -64,3 +64,9 @@ Image résultat présente avec les traits horizontaux et verticaux représentant
 ## Day 14
 
 En Delphi avec gestion d'un dictionnaire
+
+## Day 14
+
+En Delphi pour générer un script openscad, qui génère un fichier stl dans lequel je cherche à calculer le volume
+Malheureusement la partie 1 marche mais les approximations de caclul ne marche pas en partie 2
+
