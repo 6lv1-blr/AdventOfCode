@@ -65,6 +65,10 @@ Image résultat présente avec les traits horizontaux et verticaux représentant
 
 En Delphi avec gestion d'un dictionnaire
 
+## Day 16
+
+une vue graphique en arborescence pour comprendre mieux l'énoncé
+
 ## Day 17
 
 sujet un peu difficile à imaginer dans ma tête mais la solution est finalement simple
