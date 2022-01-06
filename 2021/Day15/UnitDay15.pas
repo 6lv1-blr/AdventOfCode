@@ -334,7 +334,7 @@ begin
     end;
   maxx := StringGridRisk.ColCount - 2;
   maxy := StringGridRisk.RowCount - 2;
-  for i := 1 to (maxx) * 2 do
+  for i := 1 to (maxx) * 10 do
     begin
       for x := 1 to maxx do
         for y := 1 to maxy do
