@@ -33,10 +33,10 @@ type
     LabeledEditResultPart1: TLabeledEdit;
     LabeledEditResultPart2: TLabeledEdit;
     StatusBar1: TStatusBar;
-    ButtonEtape1_3: TButton;
     Button1: TButton;
     Button3: TButton;
     Label2: TLabel;
+    Button4: TButton;
     procedure ButtonEtape1_1SampleClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure ButtonEtape1_2Click(Sender: TObject);
@@ -45,12 +45,16 @@ type
     procedure ButtonEtape2_2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
   private
     NbFlashArray: Integer;
     ChaineInputPuzzle: String;
     DictionnaryAlphabet, DictionnaryPuzzle, DictionnaryPuzzleTemp: TObjectDictionary<String, Uint64>;
     DictionnaryReplacement: TObjectDictionary<String, String>;
     nbstepTotal: Integer;
+    nbcycle: Integer;
+    InterruptionCalcul: Boolean;
     { Déclarations privées }
   public
     { Déclarations publiques }
@@ -64,10 +68,13 @@ implementation
 {$R *.dfm}
 
 
+uses System.Diagnostics;
+
 procedure TForm3.ButtonEtape1_1SampleClick(Sender: TObject);
 var
   i, j: Integer;
 begin
+  InterruptionCalcul := True;
   StringGridPuzzle.DefaultColWidth := 25;
   StringGridPuzzle.DefaultRowHeight := 15;
   StringGridPuzzle.Font.Size := 8;
@@ -120,10 +127,12 @@ var
   maxy: Integer;
   maxx: Integer;
 begin
-  StringGridPuzzle.DefaultColWidth := 25;
+  InterruptionCalcul := True;
+
+  StringGridPuzzle.DefaultColWidth := 15;
   StringGridPuzzle.DefaultRowHeight := 15;
   StringGridPuzzle.Font.Size := 8;
-  StringGridRisk.DefaultColWidth := 25;
+  StringGridRisk.DefaultColWidth := 30;
   StringGridRisk.DefaultRowHeight := 15;
   StringGridRisk.Font.Size := 8;
 
@@ -153,7 +162,7 @@ begin
           StringGridPuzzle.Cells[x, (i * maxy) + y] := (((i + StringGridPuzzle.Cells[x, y].ToInteger - 1) mod 9) + 1).ToString;
 
     maxy := maxy * 5;
-   for i := 0 to StringGridPuzzle.RowCount - 1 do
+    for i := 0 to StringGridPuzzle.RowCount - 1 do
       begin
         StringGridPuzzle.Cells[0, i] := '99999999';
         StringGridPuzzle.Cells[StringGridPuzzle.ColCount - 1, i] := '99999999';
@@ -197,6 +206,7 @@ var
   maxy: Integer;
   maxx: Integer;
 begin
+  InterruptionCalcul := True;
   StringGridPuzzle.DefaultColWidth := 25;
   StringGridPuzzle.DefaultRowHeight := 15;
   StringGridPuzzle.Font.Size := 8;
@@ -230,7 +240,7 @@ begin
           StringGridPuzzle.Cells[x, (i * maxy) + y] := (((i + StringGridPuzzle.Cells[x, y].ToInteger - 1) mod 9) + 1).ToString;
 
     maxy := maxy * 5;
-   for i := 0 to StringGridPuzzle.RowCount - 1 do
+    for i := 0 to StringGridPuzzle.RowCount - 1 do
       begin
         StringGridPuzzle.Cells[0, i] := '99999999';
         StringGridPuzzle.Cells[StringGridPuzzle.ColCount - 1, i] := '99999999';
@@ -260,11 +270,18 @@ begin
 
 end;
 
+procedure TForm3.Button4Click(Sender: TObject);
+begin
+  InterruptionCalcul := True;
+
+end;
+
 procedure TForm3.ButtonEtape1_1Click(Sender: TObject);
 var
   i: Integer;
   j: Integer;
 begin
+  InterruptionCalcul := True;
   StringGridPuzzle.DefaultColWidth := 25;
   StringGridPuzzle.DefaultRowHeight := 15;
   StringGridPuzzle.Font.Size := 8;
@@ -318,8 +335,13 @@ procedure TForm3.ButtonEtape1_2Click(Sender: TObject);
 var
   maxx, maxy: int64;
   x, y, z, a, b, c, d, i, j: int64;
+  AuMoins1Modif: Boolean;
+  Temps: TStopWatch;
 
 begin
+  Temps.StartNew;
+  Temps.Start;
+  InterruptionCalcul := True;
 
   // from https://github.com/mikewarot/Advent_of_Code_in_Pascal/tree/master/2021
 
@@ -332,49 +354,84 @@ begin
         end;
 
     end;
+
+  // rempli le risque de la diagonale en premier
+
   maxx := StringGridRisk.ColCount - 2;
   maxy := StringGridRisk.RowCount - 2;
+  StringGridRisk.Cells[maxx, maxy] := StringGridPuzzle.Cells[maxx, maxy];
+  for x := maxx - 1 downto 1 do
+    begin
+      StringGridRisk.Cells[x + 1, x] := (StringGridRisk.Cells[x + 1, x + 1].ToInt64 + StringGridPuzzle.Cells[x + 1, x].ToInt64).ToString;
+      StringGridRisk.Cells[x, x] := (StringGridRisk.Cells[x + 1, x].ToInt64 + StringGridPuzzle.Cells[x, x].ToInt64).ToString;
+    end;
+  Application.ProcessMessages;
+  sleep(1000);
+  InterruptionCalcul := False;
+
+  AuMoins1Modif := True;
+
   for i := 1 to (maxx) * 10 do
     begin
+      if not AuMoins1Modif then // si rien n'a changé alors on a le minimum
+        break;
+      AuMoins1Modif := False;
       for x := 1 to maxx do
         for y := 1 to maxy do
           begin
-            a := 99999999;
-            if x < maxx then
-              a := StringGridRisk.Cells[x + 1, y].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
-            b := 99999999;
-            if y < maxy then
-              b := StringGridRisk.Cells[x, y + 1].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
-            c := 99999999;
-            if x > 1 then
-              c := StringGridRisk.Cells[x - 1, y].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
-            d := 99999999;
-            if y > 1 then
-              d := StringGridRisk.Cells[x, y - 1].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
-            z := 99999999;
-            if a < z then
-              z := a;
-            if b < z then
-              z := b;
-            if c < z then
-              z := c;
-            if d < z then
-              z := d;
-            if (x = maxx) AND (y = maxy) then
-              z := StringGridPuzzle.Cells[x, y].ToInt64;
-            StringGridRisk.Cells[x, y] := z.ToString;
-
-            if (x = maxx) and (y = maxy) then
+            if not InterruptionCalcul then
               begin
-                StringGridRisk.Col := 1;
-                StringGridRisk.row := 1;
-                Label1.Caption := i.ToString;
-                Application.ProcessMessages;
+                a := 99999999;
+                if x < maxx then
+                  a := StringGridRisk.Cells[x + 1, y].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
+                b := 99999999;
+                if y < maxy then
+                  b := StringGridRisk.Cells[x, y + 1].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
+                c := 99999999;
+                if x > 1 then
+                  c := StringGridRisk.Cells[x - 1, y].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
+                d := 99999999;
+                if y > 1 then
+                  d := StringGridRisk.Cells[x, y - 1].ToInteger + StringGridPuzzle.Cells[x, y].ToInt64;
+                z := 99999999;
+                if a < z then
+                  z := a;
+                if b < z then
+                  z := b;
+                if c < z then
+                  z := c;
+                if d < z then
+                  z := d;
+                if (x = maxx) AND (y = maxy) then
+                  z := StringGridPuzzle.Cells[x, y].ToInt64;
+                if z <> StringGridRisk.Cells[x, y].ToInt64 then
+                  begin
+                    StringGridRisk.Cells[x, y] := z.ToString;
+                    AuMoins1Modif := True;
+                  end;
+
+                nbcycle := nbcycle + 1;
+                if (nbcycle > 10850) and (StringGridPuzzle.Cells[x, y].ToInt64 < 9999) then
+                  begin
+
+                    // StringGridRisk.Col := x+1;
+                    // StringGridRisk.row := y+1;
+                    nbcycle := 0;
+                  end;
+                if (x = maxx) and (y = maxy) then
+                  begin
+                    Label1.Caption := i.ToString;
+                    Application.ProcessMessages;
+                  end;
               end;
           end; // for y
 
     end;
-  LabeledEditResultPart1.Text := inttostr(StringGridRisk.Cells[1, 1].ToInt64 - StringGridPuzzle.Cells[1, 1].ToInt64);
+  if not InterruptionCalcul then
+    LabeledEditResultPart1.Text := inttostr(StringGridRisk.Cells[1, 1].ToInt64 - StringGridPuzzle.Cells[1, 1].ToInt64);
+  Temps.Stop;
+  Label2.Caption := Label1.Caption + '  ' + Temps.ElapsedMilliseconds.ToString + ' ms';
+
 end;
 
 procedure TForm3.ButtonEtape1_3Click(Sender: TObject);
@@ -394,7 +451,13 @@ var
 begin
 
   ButtonEtape1_2Click(Sender);
+  LabeledEditResultPart2.Text := LabeledEditResultPart1.Text;
 
+end;
+
+procedure TForm3.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+  InterruptionCalcul := True;
 end;
 
 function Horloge: int64;

@@ -10,6 +10,7 @@ object Form3: TForm3
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCloseQuery = FormCloseQuery
   PixelsPerInch = 96
   DesignSize = (
     1111
@@ -498,9 +499,9 @@ object Form3: TForm3
     Width = 121
     Height = 23
     Anchors = [akTop, akRight]
-    EditLabel.Width = 133
+    EditLabel.Width = 151
     EditLabel.Height = 15
-    EditLabel.Caption = 'Resultat Part 2  /sample : '
+    EditLabel.Caption = 'Resultat Part 2  /sample : 315'
     TabOrder = 9
     Text = ''
   end
@@ -511,16 +512,6 @@ object Form3: TForm3
     Height = 19
     Panels = <>
   end
-  object ButtonEtape1_3: TButton
-    Left = 897
-    Top = 70
-    Width = 75
-    Height = 25
-    Anchors = [akTop, akRight]
-    Caption = 'Etape 1.3'
-    TabOrder = 11
-    OnClick = ButtonEtape1_3Click
-  end
   object Button1: TButton
     Left = 897
     Top = 200
@@ -528,7 +519,7 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 2.1'
-    TabOrder = 12
+    TabOrder = 11
     OnClick = Button1Click
   end
   object Button3: TButton
@@ -538,7 +529,17 @@ object Form3: TForm3
     Height = 25
     Anchors = [akTop, akRight]
     Caption = 'Etape 2.1 Sur Sample'
-    TabOrder = 13
+    TabOrder = 12
     OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 920
+    Top = 398
+    Width = 75
+    Height = 25
+    Anchors = [akTop, akRight]
+    Caption = 'Stop Calcul'
+    TabOrder = 13
+    OnClick = Button4Click
   end
 end
