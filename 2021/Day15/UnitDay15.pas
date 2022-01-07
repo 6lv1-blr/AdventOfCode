@@ -11,7 +11,8 @@ uses
   Vcl.Imaging.pngimage,
   Vcl.ComCtrls,
   System.Generics.Collections,
-  System.RegularExpressions;
+  System.RegularExpressions,
+  System.Diagnostics;
 
 type
   Array2dint8 = array of array of int8;
@@ -55,6 +56,7 @@ type
     nbstepTotal: Integer;
     nbcycle: Integer;
     InterruptionCalcul: Boolean;
+    Temps: TStopWatch;
     { Déclarations privées }
   public
     { Déclarations publiques }
@@ -67,8 +69,6 @@ implementation
 
 {$R *.dfm}
 
-
-uses System.Diagnostics;
 
 procedure TForm3.ButtonEtape1_1SampleClick(Sender: TObject);
 var
@@ -336,7 +336,6 @@ var
   maxx, maxy: int64;
   x, y, z, a, b, c, d, i, j: int64;
   AuMoins1Modif: Boolean;
-  Temps: TStopWatch;
 
 begin
   Temps.StartNew;
@@ -421,6 +420,7 @@ begin
                 if (x = maxx) and (y = maxy) then
                   begin
                     Label1.Caption := i.ToString;
+                    Label2.Caption := Label1.Caption + '  ' + Temps.ElapsedMilliseconds.ToString + ' ms';
                     Application.ProcessMessages;
                   end;
               end;
