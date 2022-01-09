@@ -34,12 +34,10 @@ type
     TreeView1: TTreeView;
     TabSheet3: TTabSheet;
     MemoBinaire: TMemo;
-    ButtonClearTreeView: TButton;
     ListBox1: TListBox;
     Label2: TLabel;
     procedure ButtonEtape1_1Click(Sender: TObject);
     procedure ButtonEtape1_1SampleClick(Sender: TObject);
-    procedure ButtonClearTreeViewClick(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
   private
     SommeVersion: Integer;
@@ -106,17 +104,13 @@ begin
   SetLength(Result, 4 * AHexStr.Length - 4 * NbIgnore);
 end;
 
-procedure TForm5.ButtonClearTreeViewClick(Sender: TObject);
-begin
-  TreeView1.Items.Clear;
-end;
-
 procedure TForm5.ButtonEtape1_1Click(Sender: TObject);
 var
   RacineTree: TTreeNode;
   SansRetourChariot: string;
 
 begin
+  PageControl1.ActivePage := TabSheet2;
   TreeView1.Items.Clear;
   MemoBinaire.Clear;
   MemoBinaire.Lines.Add(HexStrToBinStr(MemoInputPuzzle.Text));
@@ -148,6 +142,8 @@ var
   RacineTree: TTreeNode;
 
 begin
+  PageControl1.ActivePage := TabSheet2;
+  TreeView1.Items.Clear;
   MemoBinaire.Clear;
   MemoBinaire.Lines.Add(HexStrToBinStr(MemoInputSample.Lines[0]));
   RacineTree := TreeView1.Items.Add(nil, 'Racine');
@@ -291,7 +287,7 @@ begin
           else // number of Packet
             begin
               nbSubPacket := BinToInt64('00000' + copy(ChaineADecoder, 8, 11) + '', sb16Bits);
-              Racine1 := TreeView1.Items.AddChild(Racine, 'Operator Type ' + PacketTypeIDNombre.tostring + 'Operator Version ' + PacketVersionNombre.tostring + ' with ' + nbSubPacket.tostring + ' packets');
+              Racine1 := TreeView1.Items.AddChild(Racine, 'Operator Type ' + PacketTypeIDNombre.tostring + ' Operator Version ' + PacketVersionNombre.tostring + ' with ' + nbSubPacket.tostring + ' packets');
               nbbitlu := 0;
               // doit extraire le nombre de packet
               for k := 1 to nbSubPacket do

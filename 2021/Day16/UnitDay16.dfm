@@ -30,12 +30,12 @@ object Form5: TForm5
   object Label2: TLabel
     Left = 710
     Top = 631
-    Width = 266
-    Height = 45
+    Width = 247
+    Height = 30
     Anchors = [akRight, akBottom]
     Caption = 
       'choisir ci dessous un des diff'#233'rent sample puis cliquer sur le b' +
-      'outon semple (apr'#232's un clear treeview si besoin)'
+      'outon sample'
     WordWrap = True
   end
   object ButtonEtape1_1: TButton
@@ -224,16 +224,6 @@ object Form5: TForm5
     TabOrder = 7
     Text = ''
   end
-  object ButtonClearTreeView: TButton
-    Left = 851
-    Top = 39
-    Width = 129
-    Height = 25
-    Anchors = [akTop, akRight]
-    Caption = 'Clear TreeView'
-    TabOrder = 8
-    OnClick = ButtonClearTreeViewClick
-  end
   object ListBox1: TListBox
     Left = 710
     Top = 682
@@ -250,7 +240,7 @@ object Form5: TForm5
       '620080001611562C8802118E34'
       'C0015000016115A2E0802F182340'
       'A0016C880162017C3686B18A3D4780')
-    TabOrder = 9
+    TabOrder = 8
     OnClick = ListBox1Click
   end
 end
